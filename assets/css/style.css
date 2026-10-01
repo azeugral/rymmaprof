@@ -297,3 +297,54 @@ p{margin:0}
 .who > div{border-top:2px solid var(--ink);padding-top:22px}
 .who h3{font-size:20px;margin-bottom:12px}
 @media (max-width:700px){.who{grid-template-columns:1fr}}
+
+/* ---------- portfólio ---------- */
+.hero--pagina{padding-bottom:clamp(28px,4vw,48px)}
+.hero--pagina h1{font-size:clamp(32px,5vw,60px)}
+.hero--pagina .hero__lead{margin-bottom:0}
+.filtros{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.filtro{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:2px solid var(--ink);border-radius:0;background:var(--card);color:var(--ink);cursor:pointer;font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;transition:background var(--t) var(--ease),color var(--t) var(--ease),transform var(--t) var(--ease),box-shadow var(--t) var(--ease)}
+.filtro span{font-weight:500;opacity:.55}
+.filtro:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.filtro[aria-pressed="true"]{background:var(--navy);color:var(--paper);box-shadow:3px 3px 0 var(--ink)}
+.filtro:active{transform:translate(2px,2px);box-shadow:none;transition-duration:.12s}
+@media (max-width:640px){
+  .filtros{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gut) * -1) 20px;padding:0 var(--gut) 6px}
+  .filtros::-webkit-scrollbar{display:none}
+  .filtro{flex:none}
+}
+.galeria{display:flex;flex-direction:column;gap:var(--vao,10px);min-height:60vh}
+.galeria-linha{display:flex;justify-content:flex-start}
+.foto{position:relative;flex:none;padding:0;border:0;background:var(--paper-2);cursor:zoom-in;overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity .6s var(--ease),transform .9s var(--ease)}
+.foto.pronta img{opacity:1;transform:none}
+@media (hover:hover){.foto:hover img{transform:scale(1.035)}}
+.foto:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.port-cta{margin-top:clamp(40px,6vw,72px)}
+
+/* caixa ampliada */
+.caixa{width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(10,9,40,.96);color:var(--paper)}
+.caixa::backdrop{background:rgba(10,9,40,.6)}
+.caixa[open]{display:grid;grid-template-rows:auto 1fr auto}
+.caixa-topo,.caixa-rodape{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px var(--gut);font:500 12px/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.caixa-rodape{padding-bottom:max(14px,env(safe-area-inset-bottom))}
+.caixa-btn{width:44px;height:44px;display:grid;place-items:center;border:1.5px solid rgba(246,242,236,.35);background:none;color:var(--paper);cursor:pointer;transition:border-color var(--t) var(--ease)}
+.caixa-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.caixa-btn:hover{border-color:var(--paper)}
+.caixa-palco{position:relative;display:grid;place-items:center;min-height:0;padding:0 var(--gut);touch-action:pan-y}
+.caixa-palco img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;user-select:none;-webkit-user-drag:none;will-change:transform;transition:opacity .24s ease}
+.caixa-palco img.trocando{opacity:0}
+.caixa-nav{position:absolute;top:calc(50% - 32px);z-index:2;width:56px;height:64px;padding:0;display:grid;place-items:center;background:none;border:0;color:#fff;opacity:.4;cursor:pointer;filter:drop-shadow(0 1px 6px rgba(0,0,0,.7));transition:opacity var(--t) var(--ease)}
+.caixa-nav svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.caixa-nav.ant{left:0}.caixa-nav.prox{right:0}
+@media (hover:hover){.caixa-nav:hover{opacity:1}}
+.caixa-nav:focus-visible{opacity:1;outline:1.5px solid var(--paper);outline-offset:-6px}
+.caixa.uma .caixa-nav{display:none}
+.caixa-cta{color:var(--paper);text-decoration:none;border-bottom:2px solid var(--nude);padding-bottom:3px}
+@media (prefers-reduced-motion:no-preference){
+  .caixa[open]{animation:caixa-abre .24s ease-out}
+  .caixa[open] .caixa-palco img{animation:foto-abre .46s var(--ease)}
+}
+@keyframes caixa-abre{from{opacity:0}}
+@keyframes foto-abre{from{opacity:0;transform:scale(.97)}}
+@media (max-width:700px),(pointer:coarse){.caixa-palco{padding:0 4px}}
